@@ -1,0 +1,21 @@
+%tr{:class => [player['position'], player['team']['rest_round_1'] == CURRENT_ROUND || player['team']['rest_round_2'] == CURRENT_ROUND ? "descansa" : ""]}
+  %td
+    = player_image player, "height_22"
+    = team_image player['team'], 'height_22'
+  %td
+    = playing_cup player['team'] 
+    = link_to player['name'], player_url(player)
+  %td
+    = player_price(current_price(player))
+  %td
+    = played_games player, CURRENT_SEASON
+  %td
+    = total_minutos player, CURRENT_SEASON
+  %td
+    = promedio_minutos player, CURRENT_SEASON
+  %td
+    %b=sum.sum.round(2)
+  %td.important
+    = promedio_stat player, @field, CURRENT_SEASON
+  %td
+    = por_40_minutos player, @field, CURRENT_SEASON

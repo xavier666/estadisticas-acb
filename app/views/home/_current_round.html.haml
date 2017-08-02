@@ -1,0 +1,28 @@
+%h3= t('jornada_acb', round: CURRENT_ROUND)
+.games
+  - @games.each do |game|
+    - if game
+      .col-xs-3.col-sm-3.col-md-3.game
+        .col-xs-12.white.game_inner
+          .col-md-4.no_padding.center
+            %a{:href => game_path(game["id"])}
+              = team_image game["local_team"], 'height_40'
+              %br
+              = "#{game['local_team']['won']}/#{game['local_team']['lost']}"
+          - if game["local_score"].blank? and game["away_score"].blank?
+            .col-md-4.date.no_padding
+              %a{:href => game_path(game["id"])}
+                = short_date game["game_date"]
+          - else
+            .col-md-4.result.no_padding.center
+              .col-md-6.important.no_padding
+                =link_to game["local_score"], game_path(game["id"]), title: t('estadisticas', local: game['local_team']['name'], away: game["away_team"]["name"])
+              .col-md-6.important.no_padding
+                =link_to game["away_score"], game_path(game["id"]), title: t('estadisticas', local: game['local_team']['name'], away: game['away_team']['name'])
+          .col-md-4.no_padding.center
+            %a{:href => game["object_link"]}
+              = team_image game["away_team"], 'height_40'
+              %br
+              = "#{game['away_team']['won']}/#{game['away_team']['lost']}"
+        .col-xs-12.important.game_inner.center
+          = link_to t(".estadistica_primera_vuelda"), game_path(game["first_second_game"])

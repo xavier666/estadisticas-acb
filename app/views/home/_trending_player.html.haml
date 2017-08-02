@@ -1,0 +1,13 @@
+%tr{:class => [player['position'], player['team']['rest_round_1'] == CURRENT_ROUND || player['team']['rest_round_2'] == CURRENT_ROUND ? "descansa" : ""]}
+  %td
+    = player_image player, "height_22"
+    = team_image player['team'], 'height_22'
+  %td
+    = playing_cup player['team'] 
+    = link_to player['name'], player_url(player)
+  %td
+    = player_price(current_price(player))
+  - sum.each do |round|
+    %td= round
+  %td.important
+    %b=sum.sum.round(2)

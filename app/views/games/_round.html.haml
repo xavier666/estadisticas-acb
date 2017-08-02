@@ -1,0 +1,10 @@
+%h5.text-center
+  - if round > 1
+    = link_to games_round_url(round_id: round-1), remote: true do
+      %span.glyphicon.glyphicon-triangle-left
+  = t('resultados_jornada_acb', round: round)
+  = link_to games_round_url(round_id: round+1), remote: true do
+    %span.glyphicon.glyphicon-triangle-right
+
+%table.table.statistic
+  = render partial: "games/game", locals: {games: games}

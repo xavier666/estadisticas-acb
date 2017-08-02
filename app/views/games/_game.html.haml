@@ -1,0 +1,13 @@
+- games.each do |game| 
+  %tr
+    %td.col-xs-4.center
+      = team_image game['local_team'], 'height_22'
+      = link_to game['local_team']['short_code'], team_url(game['local_team']), :"title" => game['local_team']['name']
+    - unless game['local_score'].blank? and game['away_score'].blank?
+      %td.center.col-xs-2= link_to game['local_score'], game_url(game), :"title" => t('estadisticas', local: game['local_team']['name'], away: game['away_team']['name'])
+      %td.center.col-xs-2= link_to game['away_score'], game_url(game), :"title" => t('estadisticas', local: game['local_team']['name'], away: game['away_team']['name'])
+    - else
+      %td.col-xs-4.font-10.center{colspan: 2}= short_date game['game_date']
+    %td.col-xs-4.center
+      = team_image game['away_team'], 'height_22'
+      = link_to game['away_team']['short_code'], team_url(game['away_team']), :"title" => game['away_team']['name']

@@ -1,0 +1,20 @@
+es:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Record Invalid"
+
+      models:
+        content:
+          attributes:
+            title:
+              taken: "Value Already Taken."
+  admin:
+    contents:
+      index: 
+        title: "Contenidos"
+  contents:
+    home:
+      title: "Métela tú, que a mí..."
+    show:
+      title: "Métela tú, que a mí me da la risa..."

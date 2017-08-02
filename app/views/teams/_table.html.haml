@@ -1,0 +1,18 @@
+%table.table.statistic
+  %thead
+    %tr
+      %th="#"
+      %th=t("team")    
+      %th="J"
+      %th="G"
+      %th="P"
+  %tbody
+    - teams.each do |team|
+      %tr
+        %td= team['position']
+        %td
+          = team_image team, 'height_22'
+          = link_to team['short_code'], team_url(team), :"title" => team['name']
+        %td= team['played']
+        %td= team['won']
+        %td= team['lost']

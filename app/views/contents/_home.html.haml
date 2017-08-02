@@ -1,0 +1,7 @@
+- if @content
+  .section_title= t(".title")
+  .col-xs-12.no_padding.white
+    %a{:href => content_path(@content)} 
+      .image= content_image @content.image_thumb_url, css = "width_100_per_cent"
+      .col-xs-12.keywords= @content.keywords 
+      .col-xs-12.title= @content.title 

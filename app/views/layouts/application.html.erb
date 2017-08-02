@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%= display_meta_tags site: 'Estadísticas ACB' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind:bold" rel="stylesheet">
+    <%= render partial: "front/google_analytics" %>
+    <%= render partial: "front/google_addsense" %>
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= image_path "icons/apple-icon-57x57.png"%>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= image_path "icons/apple-icon-60x60.png"%>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= image_path "icons/apple-icon-72x72.png"%>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= image_path "icons/apple-icon-76x76.png"%>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= image_path "icons/apple-icon-114x114.png"%>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= image_path "icons/apple-icon-120x120.png"%>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= image_path "icons/apple-icon-144x144.png"%>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= image_path "icons/apple-icon-152x152.png"%>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= image_path "icons/apple-icon-180x180.png"%>">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= image_path "icons/android-icon-192x192.png"%>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= image_path "icons/favicon-32x32.png"%>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= image_path "icons/favicon-96x96.png"%>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= image_path "icons/favicon-16x16.png"%>">
+    <link rel="manifest" href="<%= image_path "icons/manifest.json"%>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<%= image_path "icons/ms-icon-144x144.png"%>">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+  <body class="front" id="<%= params[:controller].parameterize %>_controller" data-current-section="<%= @current_section %>">
+    <div class="container">
+      <div class="row">
+        <%= render partial: "front/navbar" %>
+      </div>
+      <!-- Page Content -->
+      <div class="row content">
+        <div class="col-md-9">
+          <%= yield %>
+        </div>
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" id="content_home">
+              <%= render partial: 'contents/home' %>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12" id="right_addsense">
+              <%= render partial: 'home/right_addsense' %>
+            </div>
+            <div class="col-xs-12" id="twitter">
+              <%= render partial: "front/twitter" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer id="footer" class="clearfix">
+      <div id="footer-widgets">
+        <div class="container">
+          <div id="footer-wrapper">
+            <div class="row">
+              <div class="col-md-3 footer-brand animated fadeInLeft">
+                <h2>EstadisticasACB</h2>
+                <p>Todas las estadísticas de la Liga Endesa ACB 2016. Consulta datos por equipos y jugadores: valoración, puntos, rebotes, asistencias y triples, así como los precios de los jugadores (BrokerBasket) para poder ser el rey del SuperManager.</p>
+                <p>© 2016 EstadisticasACB.com, All rights reserved</p>
+              </div>
+              <div class="col-md-4 footer-nav animated fadeInUp">
+                <h4>Menu —</h4>
+                <div class="col-md-6">
+                  <ul class="pages">
+                    <%= render partial: "front/menu_options" %>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-2 footer-social animated fadeInDown">
+                <h4>Síguenos</h4>
+                <ul>
+                  <li><a href="https://twitter.com/statsacb">Twitter</a></li>
+                  <li><a href="https://www.facebook.com/statsacb">Facebook</a></li>
+                  <!--<li><a href="#">Instagram</a></li>
+                  <li><a href="#">RSS</a></li>-->
+                </ul>
+              </div>
+              <!--<div class="col-md-3 footer-ns animated fadeInRight">
+                <h4>Newsletter</h4>
+                <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
+                <p>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                    </span>
+                  </div>
+                </p>
+              </div>-->
+            </div> <!-- end .row -->
+          </div> <!-- end #footer-wrapper -->
+        </div> <!-- end .container -->
+      </div> <!-- end #footer-widgets -->
+
+    </footer>
+
+
+
+
+  </body>
+</html>

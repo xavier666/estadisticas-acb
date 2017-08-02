@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    attributes:
+      statistics:
+        mas_menos: "+/-"
+  admin:
+    statistics:
+      index:
+        title: "Estadísticas"
+  statistics:
+    index:
+      title: "Estadísticas"

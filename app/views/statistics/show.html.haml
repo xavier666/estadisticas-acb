@@ -1,0 +1,49 @@
+.row
+  .col-xs-12
+    %h1= @statistic.name
+    
+  .col-xs-12
+    .table-responsive
+      %table.table.table-striped
+        %tbody
+          %tr
+            %td.col-xs-2{rowspan: 5}
+              = statistic_image @statistic
+          %tr
+            %th= "Position"
+            %td= @statistic.position
+          %tr
+            %th= "Height"
+            %td= @statistic.height
+          %tr
+            %th= "Date of Birth"
+            %td= @statistic.date_of_birth.to_s(:short_date)
+          %tr 
+            %th= "Place of Birth"
+            %td= @statistic.place_of_birth
+  .col-xs-12
+    .table-responsive
+      %table.table.table-striped
+        %thead.sortable
+          %tr
+            %th.col-xs-2= "Imatge"
+            %th.col-xs-2= "Id"
+            %th.col-xs-2= "Nom"
+            %th.col-xs-2= "Position"
+            %th.col-xs-2= "Price"
+            %th.col-xs-2= "Team"
+        %tbody=# render @statistic.statistics
+  .col-xs-12
+    %h1= "Acumulats 2015"
+  .col-xs-12
+    .table-responsive
+      %table.table.table-striped
+        %thead.sortable
+          %tr
+            %th.col-xs-2= "ID"
+            %th.col-xs-2= "Jornada"
+            %th.col-xs-2= "Equip"
+            %th.col-xs-2= "Rival"
+            %th.col-xs-2= "Acumulats Fets"
+            %th.col-xs-2= "Acumulats Rebuts"
+        %tbody=# render @statistic.statistics.statistic.where(season: "2015").order(:game_number)

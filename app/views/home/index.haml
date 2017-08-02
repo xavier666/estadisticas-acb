@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    = render partial: "home/best_round"
+.row
+  .col-md-12
+    = render partial: "home/trending"
+.row
+  .col-md-12
+    = render partial: "home/current_round"
+.row
+  #calendario_home.col-xs-12.col-sm-6.col-md-6
+    = render partial: 'games/round', locals: {round: CURRENT_ROUND.to_i-1, games: @round_games} if @round_games and @round_games.any?
+  #table_home.col-xs-12.col-sm-6.col-md-6
+    = render partial: 'teams/table', locals: {teams: @teams} if @teams and @teams.any?

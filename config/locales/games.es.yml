@@ -1,0 +1,16 @@
+es:
+  admin:
+    games:
+      index: 
+        title: "Partidos"
+  games:
+    index: 
+      actions:
+        import_table: "Import Table"
+      description: "Calendario de la Liga Endesa ACB, temporada %{season}. Todos las joradas, horarios y resultados de los partidos ya disputados."
+      keywords: "calendario, acb, liga endesa, partidos, resultados"
+      title: "Calendario ACB Liga Endesa %{season}"
+    show:
+      description: "Estadísticas completas del partido entre %{local} y %{away} correspondiente a la jornada %{round} de la Liga ACB Endesa, temporada %{season} "
+      keywords: "%{local}, %{away}, estadísticas"
+      title: "Estadísticas %{local} - %{away}"

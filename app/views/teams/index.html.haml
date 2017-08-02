@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    %h1= t(".title", season: CURRENT_SEASON)
+  .col-xs-12
+    %table.table.statistic
+      %thead
+        %th.col-md-1
+        %th.col-md-3= "Name"
+
+      %tbody
+        - @teams.each do |team|
+          %tr.editable{data: {id: team['id']} }
+            = render partial: "team", locals: {team: team}

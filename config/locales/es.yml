@@ -1,0 +1,114 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  a: "A"
+  acb: "ACB"
+  alero: "Alero"
+  all: "Todos"
+  asistencias: "Asistencias"
+  base: "Base"
+  bp: "BP"
+  br: "BR"
+  front:
+    menu_options:
+      brokerbasket: "BrokerBasket"
+      comparador: "Comparador"
+      games: "Calendario ACB"
+      players: "Jugadores"
+      players_supermanager: "Datos SuperManager"
+      teams: "Clasificación ACB"
+      trending_players: "Jugadores en Racha"
+  down: "Baja %{per_cent}%"
+  estadistica: "Estadística"
+  estadisticas: "Estadísticas del %{local} - %{away}"
+  fp: "FP"
+  fr: "FR"
+  game: "Partido"
+  jornada: "Jornada %{round}"  
+  jornada_acb: "Jornada %{round} ACB"
+  m: "M"
+  mas_menos:  "+/-"
+  min: "MIN"
+  minutes: "Minutos"
+  name: "Nombre"
+  pivot: "Pivot"
+  player: "Jugador"
+  position: "Posición"
+  price: "Precio"
+  puntos: "Puntos"
+  pt: "PT"
+  rebotes: "Rebotes"
+  remain: "Se Mantiene"
+  reb: "REB"
+  resultados_jornada_acb: "Resultados Jornada %{round} ACB"
+  round: "Jornada"
+  rounds: "Jornadas"
+  search_by_name: "Buscar por Nombre..."
+  search_by_position: "Buscar por Posición"
+  search_by_team: "Buscar por Equipo"
+  sm: "SM"
+  t1: "1P"
+  t2: "2P"
+  t3: "3P"
+  tap: "TAP"
+  team: "Equipo"
+  total: "Total"
+  triples: "Triples"
+  up: "Sube %{per_cent}%"
+  v: "VAL"
+  valoracion: "Valoración"
+  ver_mas: "ver +"
+  weeks:
+    week_1: "1"
+    week_2: "2"
+    week_3: "3"
+    week_4: "4"
+    week_5: "5"
+    week_6: "6"
+    week_7: "7"
+    week_8: "8"
+    week_9: "9"
+    week_10: "10"
+    week_11: "11"
+    week_12: "12"
+    week_13: "13"
+    week_14: "14"
+    week_15: "15"
+    week_16: "16"
+    week_17: "17"
+    week_18: "18"
+    week_19: "19"
+    week_20: "20"
+    week_21: "21"
+    week_22: "22"
+    week_23: "23"
+    week_24: "24"
+    week_25: "25"
+    week_26: "26"
+    week_27: "27"
+    week_28: "28"
+    week_29: "29"
+    week_30: "30"
+    week_31: "31"
+    week_32: "32"
+    week_33: "33"
+    week_34: "34"

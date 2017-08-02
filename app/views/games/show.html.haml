@@ -1,0 +1,37 @@
+%h2="Estadísticas del #{@game['local_team']['to_s']} - #{@game['away_team']['to_s']}"
+  
+%h3
+  = team_image @game['local_team']
+  = @game['local_team']['name']
+.table-responsive
+  %table.table.statistic
+    %thead
+      %tr
+        %th
+        %th= "#"
+        %th.player="Jugador"
+        - Statistic.fields.each do |field|
+          - unless field == 'game'
+            %th= t("#{field}")
+    %tbody
+      = render partial: "game_statistic", locals: {team: @game['local_team'], game: @game}
+
+= render partial: "game_addsense"
+
+%h3
+  = team_image @game['away_team']
+  = @game['away_team']['name']
+.table-responsive
+  %table.table.statistic      
+    %thead
+      %tr
+        %th
+        %th= "#"
+        %th.player="Jugador"
+        - Statistic.fields.each do |field|
+          - unless field == 'game'
+            %th= t("#{field}")
+    %tbody
+      = render partial: "game_statistic", locals: {team: @game['away_team'], game: @game}
+
+= render "inc/leyenda"

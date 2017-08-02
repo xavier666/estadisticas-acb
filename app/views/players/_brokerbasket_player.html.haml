@@ -1,0 +1,24 @@
+- if player  
+  - promedio = promedio_stat player, "sm", CURRENT_SEASON
+  - player_price(current_price(player))
+  - sube_15 = sube_15 player, CURRENT_SEASON
+  - baja_15 = baja_15 player, CURRENT_SEASON
+  - se_mantiene = se_mantiene player, CURRENT_SEASON
+  - classes = [("important" if sube_15 < promedio)]
+
+  %tr{:class => player['position'].to_s }
+    %td{:class => classes }
+      = player_image player, "height_22"
+      = team_image player['team'], 'height_22'
+    %td{:class => classes }
+      = playing_cup player['team'] 
+      = link_to player['name'], player_url(player)
+    %td{:class => classes }= player_price(current_price(player))
+    %td{:class => classes }= promedio
+    %td{:class => classes }
+      = sube_15 
+      %span.up= "(+#{player_price (current_price(player) * 0.15).to_i})"
+    %td{:class => classes }= se_mantiene
+    %td{:class => classes }
+      = baja_15
+      %span.down= "(-#{player_price (current_price(player) * 0.15).to_i})"

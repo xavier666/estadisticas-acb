@@ -1,0 +1,60 @@
+es:  
+  activerecord:
+    attributes:
+      player:
+        date_of_birth: "Fecha de Nacimiento"
+        height: "Altura"
+        place_of_birth: "Lugar de Nacimiento"
+        player: "Jugador"
+        position: "Posición"
+        price: "Precio"
+    models:
+      player: "Jugador"
+  admin:
+    players:
+      index: 
+        calculate_prices: "Calculate Prices"
+        import_numbers: "Import Numbers"
+        import_players: "Import Players"
+        title: "Jugadores"
+  enumerize:
+    player:
+      position:
+        all: "All"
+        base: "Base"
+        alero: "Alero"
+        pivot: "Pívot"
+  players:
+    brokerbasket:
+      description: "Precios BrokerBasket de los jugadores de la Liga Endesa para jugar al SuperManager ACB."
+      keywords: "supermanager, brokerbasket, jugadores, precios, subidas, bajadas, comprar, vender"
+      title: "BrokerBasket para el SuperManager"
+    comparar:
+      title: "Comparar jugadores ACB"
+    historico:
+      datos: "Datos"
+      description: "Los jugadores en racha de las últimas jornadas de la Liga Endesa para el SuperManager ACB, buscando por valoración, puntos, rebotes, asistencias, y clasificando en Bases, Aleros y Pívots."
+      keywords: "supermanager, fichajes, valoración, puntos, asistencias, rebotes, estadísticas, historial"
+      title: "Jugadores en Racha"
+      total_round: "Total (%{rounds} Jornadas)"
+      ultimas_jornadas: "Últimas Jornadas"
+    index:
+      description: "Todos los jugadores de la liga Endesa ACB, clasificados por equipo y posición."
+      keywords: "jugadores, acb, equipos, alero, bases, pívots"
+      title: "Jugadores Liga Endesa ACB %{season}"
+    mejores_jornada:
+      description: "Los mejores jugadores de cada Jornada de la Liga Endesa ACB, permitiendo consultar por estadísticas de valoración, puntos, rebotes, asistencias y triples."
+      keywords: "estadísticas, acb, mejores, jornada, alero, bases, pívots"
+      title: "Los mejores de cada Jornada ACB"
+    show:
+      description: "Estadísticas de %{player} de la Liga Endesa ACB %{season}. Valoración, puntos, rebotes asistencias y triples por jornada, acumulados y promedio."
+      keywords: "%{player}, estadísticas, acumulados, histórico, temporada, acb"
+      title: "Estadísticas de %{player}"
+    temporada:
+      description: "Estadísticas globales de los jugadores de la Liga Endesa ACB para el SuperManager KIA. Datos acumulados por puntuación SuperManager, valoración, puntos, rebotes y asistencias; con promedios, acumulados y estadísticas por 40 minutos jugados."
+      keywords: "jugadores supermanger, estadísticas, acb, supermanager, por 40 minutos, promedios, acumulados"
+      title: "Datos SuperManager"
+      played_games: "Partidos"
+      por_40_min: "Por 40 Minutos"
+      minutos_totales: "Min. Totales"
+      minutos_por_partido: "Min. x Partido"

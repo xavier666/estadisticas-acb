@@ -1,0 +1,14 @@
+es:
+  admin:
+    teams:
+      index: 
+        title: "Teams"
+  teams:
+    index: 
+      description: "Todos los equipos de la Liga ACB de la temporada %{season}"
+      keywords: "equipos, acb, liga endesa"
+      title: "Equipos Liga ACB %{season}"
+    show:
+      description: "Estadísticas de todos los jugadores del %{team} de la temporada %{season}. Valoración, puntos, rebotes, asistencias, triples; así como todos los datos del partido."
+      keywords: "estadisticas, %{team}, jugadores, valoración, puntos, rebotes, asistencias, triples"
+      title: "Estadísticas %{team}"

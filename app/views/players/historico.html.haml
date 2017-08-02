@@ -1,0 +1,43 @@
+%h3= t('.title')
+%ul.nav.nav-tabs{:role => "tablist"}
+  - @positions.each do |position|
+    %li{:class => ("active" if position == @position)}
+      = link_to t(position).pluralize.humanize, {:controller => "players", :action => "historico", :field => @field, :position => position, :num_rounds => @num_rounds}
+
+.tab-content
+  - @positions.each do |position|
+    .tab-pane{:id => "tabs-#{position}", :class => ("active" if position == @position)}
+      - if position == @position
+        .table-responsive
+          %table.table.table-striped.statistic
+            %thead
+              %tr
+                %th{colspan: "#{@num_rounds+4}"}
+                  .col-xs-6
+                    = t('.datos')
+                    %br
+                    = link_to "sm", {:controller => "players", :action => "historico", :field => "sm", :position => position, :num_rounds => @num_rounds}, { class:[ (:important if @field == "sm"), "btn btn-info" ] }
+                    = link_to "v", {:controller => "players", :action => "historico", :field => "v", :position => position, :num_rounds => @num_rounds}, { class:[ (:important if @field == "v"), "btn btn-info" ] }
+                    = link_to "pt", {:controller => "players", :action => "historico", :field => "pt", :position => position, :num_rounds => @num_rounds}, { class:[ (:important if @field == "pt"), "btn btn-info" ] }
+                    = link_to "reb", {:controller => "players", :action => "historico", :field => "reb", :position => position, :num_rounds => @num_rounds}, { class:[ (:important if @field == "reb"), "btn btn-info" ] }
+                    = link_to "a", {:controller => "players", :action => "historico", :field => "a", :position => position, :num_rounds => @num_rounds}, { class:[ (:important if @field == "a"), "btn btn-info" ] }
+                  .col-xs-6
+                    = t('.ultimas_jornadas')
+                    %br
+                    = link_to "2", {:controller => "players", :action => "historico", :field => @field, :position => position, :num_rounds => 2}, { class:[ (:important if @num_rounds == 2), "btn btn-info" ] }
+                    = link_to "3", {:controller => "players", :action => "historico", :field => @field, :position => position, :num_rounds => 3}, { class:[ (:important if @num_rounds == 3), "btn btn-info" ] }
+                    = link_to "4", {:controller => "players", :action => "historico", :field => @field, :position => position, :num_rounds => 4}, { class:[ (:important if @num_rounds == 4), "btn btn-info" ] }
+                    = link_to "5", {:controller => "players", :action => "historico", :field => @field, :position => position, :num_rounds => 5}, { class:[ (:important if @num_rounds == 5), "btn btn-info" ] }
+                    = link_to "6", {:controller => "players", :action => "historico", :field => @field, :position => position, :num_rounds => 6}, { class:[ (:important if @num_rounds == 6), "btn btn-info" ] }
+
+              %tr
+                %th
+                %th= t('player')
+                %th= t('price')
+                - (@round.to_i-@num_rounds+1..@round.to_i).each do |round|
+                  %th= round
+                %th= t('total')
+
+            %tbody
+              - @trending_players.each do |player|
+                = render partial: "home/trending_player", locals: {player: @indexed_players[player[:player_id]], round: @round, statistic: player[:statistic], sum: player[:sum] }

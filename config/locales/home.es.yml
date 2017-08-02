@@ -1,0 +1,12 @@
+es:
+  home:
+    best_round:
+      best_players_round: "Los mejores de la Jornada %{round}"
+    current_round:
+      estadistica_primera_vuelda: "Estadísticas Primera Vuelta"
+    index:
+      description: "Todas las estadísticas de la Liga Endesa ACB, para jugar a SuperManager. Datos de cada jornada: valoración, puntos, rebotes, asistencias, triples y brokerbasket."
+      keywords: "estadísticas, acb, liga endesa, valoración, supermanager, datos, brokerbasket"
+      title: "Liga Endesa"
+    trending:
+      trending_players: "Jugadores en Racha"

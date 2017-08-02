@@ -1,0 +1,5 @@
+es:
+  smart_listing:
+    actions:
+      destroy: "Eliminar"
+      edit: "Edit"

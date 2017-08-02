@@ -1,0 +1,8 @@
+%tr{:class => [player.position, player.try(:team).try(:rest_round_1) == CURRENT_ROUND || player.try(:team).try(:rest_round_2) == CURRENT_ROUND ? "descansa" : ""]}
+  %td.text-left
+    = player_image player, "height_22"
+    = link_to player.name, player_path(player)
+  %td.text-left
+    = team_image player.team, 'height_22'
+    = link_to player.team.name, team_path(player.team)
+  %td= player.position.try(:text)

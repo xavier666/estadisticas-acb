@@ -1,0 +1,28 @@
+= smart_listing_controls_for(:players, {class: "form-inline text-right"}) do
+  -# Add search box to form - it submits the form automatically on text change
+  .form-group.filter.input-append
+    = text_field_tag :name, params["name"], class: "search form-control", placeholder: t("search_by_name"), autocomplete: :off
+    = select_tag :team_id, options_from_collection_for_select(Team.active, 'id', 'name', params["team_id"]), class: "search form-control", :prompt => t("search_by_team")
+    = select_tag :position, options_for_select(["all", "base", "alero", "pivot"], params["position"]), class: "search form-control", :prompt => t("search_by_position")
+
+  %button.btn.btn-primary.disabled{type: :submit}
+    %span.glyphicon.glyphicon-search
+
+- unless smart_listing.empty?
+  .table-responsive
+    %table.table.statistic
+      %thead
+        %th.col-md-3= smart_listing.sortable t("name"), "name"
+        %th.col-md-3= smart_listing.sortable t("team"), "teams.name"
+        %th.col-md-1= smart_listing.sortable t("position"), "position"
+
+      %tbody
+        - smart_listing.collection.each do |o|
+          %tr{:class => [o.position, o.try(:team).try(:rest_round_1) == CURRENT_ROUND || o.try(:team).try(:rest_round_2) == CURRENT_ROUND ? "descansa" : ""]}
+            = smart_listing.render object: o, partial: "players/player", locals: {object: o}
+
+  -# Render nice pagination links fitted for Bootstrap 3 by default
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+- else
+  %p.warning No records!

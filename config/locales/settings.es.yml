@@ -1,0 +1,5 @@
+es:
+  admin:
+    settings:
+      index: 
+        title: "Opciones"

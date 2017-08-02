@@ -1,0 +1,35 @@
+= smart_listing_controls_for(:statistics, {class: "form-inline text-right"}) do
+  -# Add search box to form - it submits the form automatically on text change
+  .form-group.filter.input-append
+    = text_field_tag :name, params["name"], class: "search form-control", placeholder: "Search by name...", autocomplete: :off
+    = select_tag :team_id, options_from_collection_for_select(Team.active, 'id', 'name', params["team_id"]), class: "search form-control", :prompt => "Search by Team"
+
+    = select_tag :position, options_for_select(["all", "base", "alero", "pivot"], params["position"]), class: "search form-control", :prompt => "Search by Position"
+
+
+  %button.btn.btn-primary.disabled{type: :submit}
+    %span.glyphicon.glyphicon-search
+
+- unless smart_listing.empty?
+  %table.table.table-striped
+    %thead
+      %th.col-md-1= smart_listing.sortable "ID", "id"
+      %th.col-md-1
+      %th.col-md-1
+      %th.col-md-3= smart_listing.sortable "Name", "name"
+      %th.col-md-3= smart_listing.sortable "Team", "team"
+      %th.col-md-1= smart_listing.sortable "Position", "position"
+      %th.col-md-2= "Options"
+
+    %tbody
+      - smart_listing.collection.each do |o|
+        %tr.editable{data: {id: o.id}}
+          = smart_listing.render object: o, partial: "admin/statistics/statistic", locals: {object: o}
+
+      = smart_listing.item_new colspan: 7, link: new_admin_statistic_path
+
+  -# Render nice pagination links fitted for Bootstrap 3 by default
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+- else
+  %p.warning No records!

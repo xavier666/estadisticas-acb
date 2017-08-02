@@ -1,0 +1,26 @@
+.table-responsive
+  %table.table.statistic
+    %thead
+      %th
+      - Statistic.fields.each do |field|
+        %th= t("#{field}")
+    
+      %tbody
+        - (1..CURRENT_ROUND.to_i-1).each do |week|
+          %tr
+            %td= week
+            - week = statistic["week_"+week.to_s]
+            - Statistic.fields.each do |field|
+              %td{class: field}=  week[field].blank? ? "-" :  week[field]
+        %tr
+          %th{colspan: 2}= "Promedio"
+          - Statistic.fields.each do |field|
+            - unless field == 'game'
+              %th{class: field}= statistic['promedio'][field]
+        %tr
+          %th{colspan: 2}= "Total"
+          - Statistic.fields.each do |field|
+            - unless field == 'game'
+              %th{class: field}= statistic['total'][field]
+
+= render "inc/leyenda"

@@ -1,0 +1,115 @@
+- if player_1_id or player_2_id
+  .row
+    .col-xs-5.white
+      .col-xs-12.col-sm-6.center.no_padding
+        = player_image player_1_id, "height_100" if player_1_id
+      .col-xs-12.col-sm-6.center.no_padding
+        = team_image player_1_id['team'], "height_80" if player_1_id
+        .right= link_to "[Eliminar]", comparar_players_path(:player_2_id => player_2_id.nil? ? '' : player_2_id['id']), remote: true if player_1_id
+
+    .col-xs-2.white.height120
+
+    .col-xs-5.white
+      .col-xs-12.col-sm-6.center.no_padding
+        = player_image player_2_id, "height_100" if player_2_id
+      .col-xs-12.col-sm-6.center.no_padding
+        = team_image player_2_id['team'], "height_80" if player_2_id
+        .right= link_to "[Eliminar]", comparar_players_path(:player_1_id => player_1_id.nil? ? '' : player_1_id['id']), remote: true if player_2_id
+
+  .row
+    .col-xs-5.name
+      - if player_1_id
+        .col-xs-12.row
+          %h3= link_to player_1_id['name'], player_1_id
+          %h6= "#{player_1_id['position'].humanize} - #{link_to(player_1_id['team']['name'], player_1_id['team']['name'])}".html_safe
+    .col-xs-2.center.white.height79
+      %h2.vs= "VS"
+
+    .col-xs-5.name
+      - if player_2_id
+        .col-xs-12.row
+          %h3= link_to player_2_id['name'], player_2_id
+          %h6= "#{player_2_id['position'].humanize} - #{link_to(player_2_id['team']['name'], player_2_id['team'])}".html_safe
+
+  - if player_1_id
+    .row.history.data
+      .col-xs-5
+        .row
+          .btn-info.optimizar.col-xs-2.center.padding_2= t("v")
+          .btn-info.optimizar.col-xs-2.center.padding_2= t("pt")
+          .btn-info.optimizar.col-xs-4.center.padding_2= t("reb")
+          .btn-info.optimizar.col-xs-2.center.padding_2= t("t3")
+          .btn-info.optimizar.col-xs-2.center.padding_2= t("a")
+
+      .col-xs-2.center.white
+        %h4="Jornada"
+
+      - if player_2_id
+        .col-xs-5
+          .row
+            .btn-info.optimizar.col-xs-2.center.padding_2= t("v")
+            .btn-info.optimizar.col-xs-2.center.padding_2= t("pt")
+            .btn-info.optimizar.col-xs-4.center.padding_2= t("reb")
+            .btn-info.optimizar.col-xs-2.center.padding_2= t("t3")
+            .btn-info.optimizar.col-xs-2.center.padding_2= t("a")
+
+  - statistic_1 = player_1_id['statistics'].last if player_1_id
+  - statistic_1_total = statistic_1['total'] if player_1_id
+  - statistic_2 = player_2_id['statistics'].last if player_2_id
+  - statistic_2_total = statistic_2['total'] if player_2_id
+
+  - @fields.each do |week|
+    .row.history.data
+      .col-xs-5
+        - if player_1_id
+          - s = statistic_1.slice(*week)
+          - win_lost = s.values.first["v"] == s.values.first["sm"] ? "label-danger" : "label-success"
+          .row
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["v"] ? s.values.first["v"] : "-"
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["pt"] ? s.values.first["pt"] : "-"
+            .optimizar.col-xs-4.center.padding_2{class: win_lost}= s.values.first["reb"] ? s.values.first["reb"] : "-"
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["t3"] ? s.values.first["t3"] : "-"
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["a"] ? s.values.first["a"] : "-"
+
+      .col-xs-2.center.white
+        %h4= t('weeks.'+week)
+
+      .col-xs-5.player_2
+        - if player_2_id
+          - s = statistic_2.slice(*week)
+          - win_lost = s.values.first["v"] == s.values.first["sm"] ? "label-danger" : "label-success"
+          .row
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["v"] ? s.values.first["v"] : "-"
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["pt"] ? s.values.first["pt"] : "-"
+            .optimizar.col-xs-4.center.padding_2{class: win_lost}= s.values.first["reb"] ? s.values.first["reb"] : "-"
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["t3"] ? s.values.first["t3"] : "-"
+            .optimizar.col-xs-2.center.padding_2{class: win_lost}= s.values.first["a"] ? s.values.first["a"] : "-"
+
+  .row
+    .col-xs-5
+    .col-xs-2.center.white
+      %h4="PROMEDIOS"
+    .col-xs-5
+
+  - fields = ["sm", "v", "pt", "a", "reb", "t1", "t2", "t3"]
+  - fields.each do |field|
+    .row
+      .col-xs-5.player_1
+        - if player_1_id
+          - mean = statistic_1_total["#{field}"].to_f/player_1_id['played_games'].to_f
+          - value = mean.nan? ? 0 : mean.round 
+          - text = mean.nan? ? 0 : mean.round(2) 
+          %dd{class: "percentage percentage-#{value}"}
+            %h4.text=text
+      .col-xs-2.center.white.height40
+        %h4=t("#{field}")
+      .col-xs-5.player_2
+        - if player_2_id
+          - mean = statistic_2_total["#{field}"].to_f/player_2_id['played_games'].to_f
+          - value = mean.nan? ? 0 : mean.round 
+          - text = mean.nan? ? 0 : mean.round(2)
+          %dd{class: "percentage percentage-#{value}"}
+            %h4.text=text
+
+= hidden_field_tag :player_1_id, player_1_id.blank? ? "" : player_1_id['id']
+= hidden_field_tag :player_2_id, player_2_id.blank? ? "" : player_2_id['id']

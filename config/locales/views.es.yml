@@ -1,0 +1,10 @@
+es:
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      next: ">"
+      per_page: "Por Página"
+      previous: "<"
+      total: "Total"
+      truncate: "..."

@@ -1,0 +1,29 @@
+- players.each do |player| 
+  .col-xs-4.selectable-player{:data => {:player_id => "#{player['id']}"}}
+    .row
+      .col-xs-12.col-sm-4.col-md-4.center
+        = player_image player, "height_60"
+      .col-xs-12.col-sm-8.col-md-8
+        .col-xs-12.center
+          = player['name']
+          %br
+          = team_image player['team'], "height_26"
+
+:javascript
+  $(".dropdown .dropdown-content").show();
+
+  $(".selectable-player").click(function() {
+    player_1_id = $("#player_1_id").val()
+    player_2_id = $("#player_2_id").val()
+
+    if(player_1_id == '')
+      player_1_id = $(this).data("player-id")
+    else
+      player_2_id = $(this).data("player-id")
+
+    $.ajax({
+      url: '/players/comparar/'+player_1_id+'/'+player_2_id,
+      dataType: 'script',
+      type: 'GET'
+    });
+  })

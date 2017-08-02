@@ -1,0 +1,15 @@
+%tr{:class => [player['position'], player['team']['rest_round_1'] == CURRENT_ROUND || player['team']['rest_round_2'] == CURRENT_ROUND ? "descansa" : ""]}
+  %td
+    = player_image player, "height_22"
+    = team_image player['team'], 'height_22' 
+  %td
+    = playing_cup player['team']['name'] 
+    = link_to player['name'], player_url(player)
+  %td
+    = player_price(current_price(player))
+  %td{:class => ("important" if field == "sm")}= statistic["week_"+round]["sm"].blank? ? "0" : statistic["week_"+round]["sm"]
+  %td{:class => ("important" if field == "v")}= statistic["week_"+round]["v"].blank? ? "0" : statistic["week_"+round]["v"]
+  %td{:class => ("important" if field == "pt")}= statistic["week_"+round]["pt"].blank? ? "0" : statistic["week_"+round]["pt"]
+  %td{:class => ("important" if field == "reb")}= statistic["week_"+round]["reb"].blank? ? "0" : statistic["week_"+round]["reb"]
+  %td{:class => ("important" if field == "a")}= statistic["week_"+round]["a"].blank? ? "0" : statistic["week_"+round]["a"]
+  %td{:class => ("important" if field == "t3")}= statistic["week_"+round]["t3"].blank? ? "0" : statistic["week_"+round]["t3"]

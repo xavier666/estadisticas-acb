@@ -1,0 +1,23 @@
+%h3= t('.title')
+=text_field_tag :search_player, nil, {class: "form-control"}
+
+
+.dropdown#search_result.col-xs-12
+  .dropdown-content.col-xs-12.row
+
+#comparador.col-xs-12
+  = render partial: 'players/comparador', locals: {player_1_id: @player_1_id, player_2_id: @player_2_id}
+
+:javascript
+  $("#search_player").keyup(function() {
+    if($(this).val().length > 1){
+      $.ajax({
+        url: '/players/search',
+        data: { q: $(this).val() },
+        dataType: 'script',
+        type: 'GET'
+      });
+    }
+  });
+
+

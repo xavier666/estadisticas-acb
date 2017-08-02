@@ -1,0 +1,26 @@
+.col-xs-6
+  .col-xs-12.center
+    .col-xs-6
+      = player_image player, "height_100"
+    .col-xs-6
+      = team_image player.team, "height_80"
+  .col-xs-12.name
+    %h3= player.name
+    %h6= [player.position.text, player.team.name].join(" - ")
+  .col-xs-12.row
+    - statistic = player.statistics.by_season(CURRENT_SEASON).total
+    %dd{class: "percentage percentage-#{statistic["sm"].to_f.round}"}
+      %h3.text=statistic["sm"]
+    %dd{class: "percentage percentage-#{statistic["v"].to_f.round}"}
+      %h3.text=statistic["v"]
+    %dd{class: "percentage percentage-#{statistic["pt"].to_f.round}"}
+      %h3.text=statistic["pt"]
+    %dd{class: "percentage percentage-#{statistic["reb"].to_f.round}"}
+      %h3.text=statistic["reb"]
+    %dd{class: "percentage percentage-#{statistic["3"].to_f.round}"}
+      %h3.text=statistic["t3"]
+    %dd{class: "percentage percentage-#{statistic["br"].to_f.round}"}
+      %h3.text=statistic["br"]
+    %dd{class: "percentage percentage-#{statistic["bp"].to_f.round}"}
+      %h3.text=statistic["bp"]
+      

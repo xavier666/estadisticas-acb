@@ -1,0 +1,23 @@
+%h3= t('.title', round: CURRENT_ROUND)
+%ul.nav.nav-tabs{:role => "tablist"}
+  - @players_group_by_position.each do |position, players|
+    %li{:class => ("active" if position == @position)}
+      %a{"data-toggle" => "tab", :href => "#tabs-"+position.to_s}= position.pluralize.humanize
+  
+.tab-content
+  - @players_group_by_position.each do |position, players|
+    .tab-pane{:id => "tabs-#{position}", :class => ("active" if position == @position)}
+      .table-responsive
+        %table.table.statistic
+          %thead
+            %tr
+              %th
+              %th= t('jugador')
+              %th= t('price')
+              %th= t('promedio')
+              %th= t('up', per_cent: 15)
+              %th= t('remain')
+              %th= t('down', per_cent: 15)
+          %tbody
+            - players.map {|p| {id: p['id'], :price => p['price'][CURRENT_ROUND.to_s]} }.sort_by { |record| -record[:price].to_i || 0 }.each do |player|
+              = render partial: "players/brokerbasket_player", locals: {player: @players[player[:id]]}

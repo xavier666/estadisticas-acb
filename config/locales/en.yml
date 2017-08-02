@@ -1,0 +1,13 @@
+en:
+  acb: "ACB"
+  estadistica: "Estadística"
+  estadisticas: "Estadísticas del #{local} - #{away}"
+  front:
+    navbar:
+      games: "Calendario ACB"
+      players: "Jugadores"
+      teams: "Equipos"
+  jornada: "Jornada %{round}"
+  jornada_acb: "Jornada %{round} ACB"
+  mas_menos:  "+/-"
+  resultados_jornada_acb: "Resultados Jornada %{round} ACB"

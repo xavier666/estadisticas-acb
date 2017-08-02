@@ -1,0 +1,20 @@
+.table-responsive
+  %table.table.table-striped.statistic
+    %thead.sortable
+      %tr
+        %th
+        %th= "#"
+        %th= t("player")
+        - Statistic.fields.each do |field|
+          - unless field == 'game'
+            %th= t("#{field}")
+    %tbody
+      - team['players'].each do |player|
+        %tr{:class => player['position']}
+          %td.image= player_image player, "height_22"
+          %td.number= player['number']
+          %td.player= link_to player['name'], player_url(player)
+          - promedio = player['statistics'].last['promedio']
+          - Statistic.fields.each do |field|
+            - unless field == 'game'
+              %td{class: field}= promedio[field]

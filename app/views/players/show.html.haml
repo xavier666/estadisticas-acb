@@ -1,0 +1,49 @@
+.row
+  .col-xs-12.detail
+    .col-xs-5.col-md-3.row
+      = player_image @player
+    .col-xs-7.col-md-9.row
+      .col-xs-12.col-md-6
+        %h1= "##{@player['number']} <span class='split'>|</span> #{@player['name']}".html_safe
+      .col-xs-12.col-md-6
+        .position_team= "#{@player['position'].humanize} <span class='split'>|</span> #{link_to(@player['team']['name'], team_path(@player["team"]["id"]))} #{team_image(@player['team']['name'], 'height_40')}".html_safe
+        = team_image(@player['team']['name'], 'height_40')
+    .col-md-12.row
+      .col-xs-12.col-md-6
+        = short_date(@player['date_of_birth'])
+        %br
+        = "#{@player['place_of_birth']}"
+        %br
+        = "#{@player['height']} cm"
+      .col-xs-12.col-md-6
+        = link_to "[Comparar]", comparar_players_path(player_1_id: @player['id']), class: "btn-info btn optimizar col-md-12"
+    .col-xs-12.col-md-12
+      .col-xs-6.col-md-2.box
+        .label= t("val")
+        %br
+        .value= promedio_stat @player, "v", CURRENT_SEASON
+      .col-xs-6.col-md-2.box
+        .label= t("pt")
+        %br
+        .value= promedio_stat @player, "pt", CURRENT_SEASON
+      .col-xs-6.col-md-2.box
+        .label= t("reb")
+        %br
+        .value= promedio_stat @player, "reb", CURRENT_SEASON
+      .col-xs-6.col-md-2.box
+        .label= t("as")
+        %br
+        .value= promedio_stat @player, "a", CURRENT_SEASON
+      .col-xs-6.col-md-2.box
+        .label= t("t3")
+        %br
+        .value= promedio_stat @player, "t3", CURRENT_SEASON
+    
+    
+    
+  .col-xs-12
+    = render partial: "statistics/statistics_player", locals: {statistic: @player['statistics'].last}
+
+  .col-xs-12
+    = line_chart @broker_data, @options
+    = line_chart @stats_data, @options
