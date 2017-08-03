@@ -1,8 +1,5 @@
 class ContentsController < ApplicationController
 
-  include SmartListing::Helper::ControllerExtensions
-  helper  SmartListing::Helper
-
   def index
     # SEO
     @page_title       = t('.title')
