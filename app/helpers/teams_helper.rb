@@ -18,6 +18,6 @@ module TeamsHelper
   end
 
   def team_url team
-    team['object_link'].sub! BACK_URL, FRONT_URL
+    team['object_link'].sub! ENV["BACK_URL"], ENV["FRONT_URL"]
   end
 end

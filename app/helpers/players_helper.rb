@@ -18,11 +18,11 @@ module PlayersHelper
   end
 
   def player_url player
-    player['object_link'].sub! BACK_URL, FRONT_URL
+    player['object_link'].sub! ENV["BACK_URL"], ENV["FRONT_URL"]
   end
 
   def current_price player
-    player['price'][CURRENT_ROUND].to_i
+    player['price'][ENV["CURRENT_ROUND"]].to_i
   end
 
 end

@@ -6,7 +6,7 @@
         %th= t("#{field}")
     
       %tbody
-        - (1..CURRENT_ROUND.to_i-1).each do |week|
+        - (1..ENV["CURRENT_ROUND"].to_i-1).each do |week|
           %tr
             %td= week
             - week = statistic["week_"+week.to_s]

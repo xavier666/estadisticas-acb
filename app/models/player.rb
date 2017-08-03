@@ -1,19 +1,19 @@
 class Player
 # Getting Data
   def total_stat field
-    statistics.by_season([CURRENT_SEASON]).total[field].to_f
+    statistics.by_season([ENV["CURRENT_SEASON"]]).total[field].to_f
   end
 
   def played_games
-    statistics.by_season([CURRENT_SEASON]).played_games.to_i
+    statistics.by_season([ENV["CURRENT_SEASON"]]).played_games.to_i
   end
 
   def promedio_minutos
-    statistics.by_season([CURRENT_SEASON]).promedio["min"].to_s.chop.to_f
+    statistics.by_season([ENV["CURRENT_SEASON"]]).promedio["min"].to_s.chop.to_f
   end
 
   def total_minutos
-    statistics.by_season([CURRENT_SEASON]).total["min"].to_s.chop.to_f
+    statistics.by_season([ENV["CURRENT_SEASON"]]).total["min"].to_s.chop.to_f
   end
 
   def por_40_minutos field
@@ -21,7 +21,7 @@ class Player
   end
 
   def current_price
-    price[CURRENT_ROUND]
+    price[ENV["CURRENT_ROUND"]]
   end
 
   def sube_15

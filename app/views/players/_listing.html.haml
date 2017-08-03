@@ -18,7 +18,7 @@
 
       %tbody
         - smart_listing.collection.each do |o|
-          %tr{:class => [o.position, o.try(:team).try(:rest_round_1) == CURRENT_ROUND || o.try(:team).try(:rest_round_2) == CURRENT_ROUND ? "descansa" : ""]}
+          %tr{:class => [o.position, o.try(:team).try(:rest_round_1) == ENV["CURRENT_ROUND"] || o.try(:team).try(:rest_round_2) == ENV["CURRENT_ROUND"] ? "descansa" : ""]}
             = smart_listing.render object: o, partial: "players/player", locals: {object: o}
 
   -# Render nice pagination links fitted for Bootstrap 3 by default

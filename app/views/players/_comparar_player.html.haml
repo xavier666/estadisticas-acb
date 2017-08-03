@@ -8,7 +8,7 @@
     %h3= player.name
     %h6= [player.position.text, player.team.name].join(" - ")
   .col-xs-12.row
-    - statistic = player.statistics.by_season(CURRENT_SEASON).total
+    - statistic = player.statistics.by_season(ENV["CURRENT_SEASON"]).total
     %dd{class: "percentage percentage-#{statistic["sm"].to_f.round}"}
       %h3.text=statistic["sm"]
     %dd{class: "percentage percentage-#{statistic["v"].to_f.round}"}

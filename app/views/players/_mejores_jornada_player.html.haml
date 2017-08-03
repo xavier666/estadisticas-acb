@@ -1,4 +1,4 @@
-%tr{:class => [player['position'], player['team']['rest_round_1'] == CURRENT_ROUND || player['team']['rest_round_2'] == CURRENT_ROUND ? "descansa" : ""]}
+%tr{:class => [player['position'], player['team']['rest_round_1'] == ENV["CURRENT_ROUND"] || player['team']['rest_round_2'] == ENV["CURRENT_ROUND"] ? "descansa" : ""]}
   %td
     = player_image player, "height_22"
     = team_image player['team'], 'height_22' 

@@ -1,4 +1,4 @@
-%h3= t('.title', round: CURRENT_ROUND)
+%h3= t('.title', round: ENV["CURRENT_ROUND"])
 %ul.nav.nav-tabs{:role => "tablist"}
   - @players_group_by_position.each do |position, players|
     %li{:class => ("active" if position == @position)}
@@ -19,5 +19,5 @@
               %th= t('remain')
               %th= t('down', per_cent: 15)
           %tbody
-            - players.map {|p| {id: p['id'], :price => p['price'][CURRENT_ROUND.to_s]} }.sort_by { |record| -record[:price].to_i || 0 }.each do |player|
+            - players.map {|p| {id: p['id'], :price => p['price'][ENV["CURRENT_ROUND"].to_s]} }.sort_by { |record| -record[:price].to_i || 0 }.each do |player|
               = render partial: "players/brokerbasket_player", locals: {player: @players[player[:id]]}

@@ -1,4 +1,4 @@
-%h3= t('jornada_acb', round: CURRENT_ROUND)
+%h3= t('jornada_acb', round: ENV["CURRENT_ROUND"])
 .games
   - @games.each do |game|
     - if game

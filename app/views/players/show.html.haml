@@ -21,23 +21,23 @@
       .col-xs-6.col-md-2.box
         .label= t("val")
         %br
-        .value= promedio_stat @player, "v", CURRENT_SEASON
+        .value= promedio_stat @player, "v", ENV["CURRENT_SEASON"]
       .col-xs-6.col-md-2.box
         .label= t("pt")
         %br
-        .value= promedio_stat @player, "pt", CURRENT_SEASON
+        .value= promedio_stat @player, "pt", ENV["CURRENT_SEASON"]
       .col-xs-6.col-md-2.box
         .label= t("reb")
         %br
-        .value= promedio_stat @player, "reb", CURRENT_SEASON
+        .value= promedio_stat @player, "reb", ENV["CURRENT_SEASON"]
       .col-xs-6.col-md-2.box
         .label= t("as")
         %br
-        .value= promedio_stat @player, "a", CURRENT_SEASON
+        .value= promedio_stat @player, "a", ENV["CURRENT_SEASON"]
       .col-xs-6.col-md-2.box
         .label= t("t3")
         %br
-        .value= promedio_stat @player, "t3", CURRENT_SEASON
+        .value= promedio_stat @player, "t3", ENV["CURRENT_SEASON"]
     
     
     

@@ -1,9 +1,9 @@
 - if player  
-  - promedio = promedio_stat player, "sm", CURRENT_SEASON
+  - promedio = promedio_stat player, "sm", ENV["CURRENT_SEASON"]
   - player_price(current_price(player))
-  - sube_15 = sube_15 player, CURRENT_SEASON
-  - baja_15 = baja_15 player, CURRENT_SEASON
-  - se_mantiene = se_mantiene player, CURRENT_SEASON
+  - sube_15 = sube_15 player, ENV["CURRENT_SEASON"]
+  - baja_15 = baja_15 player, ENV["CURRENT_SEASON"]
+  - se_mantiene = se_mantiene player, ENV["CURRENT_SEASON"]
   - classes = [("important" if sube_15 < promedio)]
 
   %tr{:class => player['position'].to_s }
