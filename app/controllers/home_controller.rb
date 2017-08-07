@@ -12,12 +12,11 @@ class HomeController < ApplicationController
     connection = Faraday.get ENV["API_URL"]+"games.json"
     @games = JSON.parse(connection.body)
 
-    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=base"
+    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=base&count=10"
     @statistics_bases = JSON.parse(connection.body)
-
-    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=alero"
+    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=alero&count=10"
     @statistics_aleros = JSON.parse(connection.body)
-    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=pivot"
+    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=pivot&count=10"
     @statistics_pivots = JSON.parse(connection.body)
 
     @statistics = {"base" => @statistics_bases, "alero" => @statistics_aleros, "pivot" => @statistics_pivots }
