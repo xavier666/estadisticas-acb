@@ -12,14 +12,14 @@ class HomeController < ApplicationController
     connection = Faraday.get ENV["API_URL"]+"games.json"
     @games = JSON.parse(connection.body)
 
-    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=base&count=10"
-    @statistics_bases = JSON.parse(connection.body)
-    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=alero&count=10"
-    @statistics_aleros = JSON.parse(connection.body)
-    connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=pivot&count=10"
-    @statistics_pivots = JSON.parse(connection.body)
+    #connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=base&count=10"
+    #@statistics_bases = JSON.parse(connection.body)
+    #connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=alero&count=10"
+    #@statistics_aleros = JSON.parse(connection.body)
+    #connection = Faraday.get ENV["API_URL"]+"statistics?season=#{ENV["CURRENT_SEASON"]}&position=pivot&count=10"
+    #@statistics_pivots = JSON.parse(connection.body)
 
-    @statistics = {"base" => @statistics_bases, "alero" => @statistics_aleros, "pivot" => @statistics_pivots }
+    #@statistics = {"base" => @statistics_bases, "alero" => @statistics_aleros, "pivot" => @statistics_pivots }
     @field = params[:field] || "v" 
     @position = params[:position] || "base"
 
@@ -31,10 +31,12 @@ class HomeController < ApplicationController
     @positions.unshift("all") if @positions.exclude? "all"
 
     @num_rounds = 1
-    fields = (ENV["CURRENT_ROUND"].to_i-@num_rounds..ENV["CURRENT_ROUND"].to_i-1).map{ |i| 'week_'+i.to_s}
-    @round_players = []
-    @round_players = @players.map{|p| {player_id: p['id'], statistic: p['statistics'].last, sum: p['statistics'].last.slice(*fields).map{|k, values| values["v"].to_f}} }.sort_by { |record| -(record[:sum]).sum.to_f }.first(10)
+    #fields = (ENV["CURRENT_ROUND"].to_i-@num_rounds..ENV["CURRENT_ROUND"].to_i-1).map{ |i| 'week_'+i.to_s}
+    #@round_players = []
+    #@round_players = @players.map{|p| {player_id: p['id'], statistic: p['statistics'].last, sum: p['statistics'].last.slice(*fields).map{|k, values| values["v"].to_f}} }.sort_by { |record| -(record[:sum]).sum.to_f }.first(10)
 
+    connection = Faraday.get ENV["API_URL"]+"statistics/trending_players?limit=10&round=34&season=2016&order=v"
+    @round_players = JSON.parse(connection.body)
 
     @num_rounds = 3
     fields = (ENV["CURRENT_ROUND"].to_i-@num_rounds..ENV["CURRENT_ROUND"].to_i-1).map{ |i| 'week_'+i.to_s}

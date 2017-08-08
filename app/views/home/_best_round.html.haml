@@ -21,5 +21,5 @@
             %th= link_to t("a"), {:controller => "players", :action => "mejores_jornada", :field => "a"}, class: 'btn btn-info optimizar'
             %th= link_to  t("t3"), {:controller => "players", :action => "mejores_jornada", :field => "t3"}, class: 'btn btn-info optimizar'
         %tbody
-          - @round_players.each do |player|
-            = render partial: "players/mejores_jornada_player", locals: {player: @indexed_players[player[:player_id]], round: @round, statistic: player[:statistic], sum: player[:sum], field: "v", position: "base" }
+          - @round_players.each do |statistic|
+            = render partial: "players/mejores_jornada_player", locals: {player: @indexed_players[statistic["player"]["player_id"]], round: @round, statistic: statistic, sum: statistic[:sum], field: "v", position: "base" }
